@@ -7,6 +7,7 @@ public class Tabuleiro {
     }
 
     public ArrayList<Posicao> getPosicoes() {
+
         return posicoes;
     }
 
