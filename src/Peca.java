@@ -4,12 +4,12 @@ public abstract class Peca {
     private String cor;
     private Posicao posicao;
 
-        public boolean verificaPeca(Posicao posicao, ArrayList<Posicao>possiveisMovimentos) {
+    public boolean verificaPeca(Posicao posicao, ArrayList<Posicao> possiveisMovimentos) {
         if (posicao.getPeca() == null) {
             possiveisMovimentos.add(posicao);
             return false;
 
-        } else{
+        } else {
             if (!posicao.getPeca().getCor().equals(this.getCor())) {
                 possiveisMovimentos.add(posicao);
             }
@@ -19,24 +19,25 @@ public abstract class Peca {
 
     }
 
-        public void mover(Tabuleiro tabuleiro, Posicao posicao){
-        ArrayList<Posicao>possiveisPosicoes=possiveisMovimento(tabuleiro);
-        for(Posicao posicaoPossivel :possiveisPosicoes ){
-            if(posicaoPossivel==posicao){
+    public void mover(Tabuleiro tabuleiro, Posicao posicao) {
+        ArrayList<Posicao> possiveisPosicoes = possiveisMovimento(tabuleiro);
+        for (Posicao posicaoPossivel : possiveisPosicoes) {
+            if (posicaoPossivel == posicao) {
                 //atribuindo a peça para nova posição no tabuleiro
                 posicao.setPeca(this);
                 //removendo a peça da posição anterior
                 this.posicao.setPeca(null);
                 //trocando a posição atual da peça
-                this.posicao=posicao;
+                this.posicao = posicao;
                 break;
             }
         }
-        this.posicao=posicao;
+        this.posicao = posicao;
 
     }
+
     public abstract ArrayList<Posicao> possiveisMovimento(Tabuleiro tabuleiro);
-   // public abstract char icone();
+    // public abstract char icone();
 
 
     public Posicao getPosicao() {
@@ -46,4 +47,5 @@ public abstract class Peca {
     public String getCor() {
         return cor;
     }
+}
 
