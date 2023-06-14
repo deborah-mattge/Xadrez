@@ -19,7 +19,7 @@ public class Cavalo extends Peca{
                     indice == posicaoNoTabuleiro -10||
                     indice == posicaoNoTabuleiro -6||
                     indice == posicaoNoTabuleiro +6||
-                    
+
                     indice == posicaoNoTabuleiro +10||
                     indice == posicaoNoTabuleiro +15||
                     indice == posicaoNoTabuleiro +17){
