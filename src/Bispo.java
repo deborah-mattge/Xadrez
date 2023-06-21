@@ -49,5 +49,8 @@ public class Bispo extends Peca{
         return possiveisMovimentos;
     }
 
-
-        }
+    @Override
+    public String toString() {
+        return "Bispo"+super.toString();
+    }
+}

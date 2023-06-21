@@ -23,7 +23,7 @@ public abstract class Peca {
 
     }
 
-    public void mover(Tabuleiro tabuleiro, Posicao posicao) {
+    public boolean mover(Tabuleiro tabuleiro, Posicao posicao) {
         ArrayList<Posicao> possiveisPosicoes = possiveisMovimento(tabuleiro);
         for (Posicao posicaoPossivel : possiveisPosicoes) {
             if (posicaoPossivel == posicao) {
@@ -33,10 +33,11 @@ public abstract class Peca {
                 this.posicao.setPeca(null);
                 //trocando a posição atual da peça
                 this.posicao = posicao;
-                break;
+               return true;
             }
         }
         this.posicao = posicao;
+        return false;
 
     }
     public boolean validaExtremidade(int posicaoNoTabuleiro){
@@ -54,6 +55,13 @@ public abstract class Peca {
 
     public String getCor() {
         return cor;
+    }
+
+    @Override
+    public String toString() {
+        return "cor='" + cor + '\'' +
+                ", posicao=" + posicao +
+                '}';
     }
 }
 
