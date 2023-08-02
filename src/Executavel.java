@@ -16,7 +16,7 @@ public class Executavel {
             mostrarTabuleiro();
             int escolhaPeca = sc.nextInt();
             Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
-            if(j1.getPecas().contains(peca)){
+            if(j2.getPecas().contains(peca)){
 
                 System.out.println(peca);
                 //Escolha da posição para o movimento

@@ -18,8 +18,8 @@ public class Bispo extends Peca{
             }
         }
         for (int i = (validaExtremidade(posicaoNoTabuleiro + 1) ?
-                -1 : posicaoNoTabuleiro + 7);
-             i >= tabuleiro.getPosicoes().size();
+                -1 : posicaoNoTabuleiro - 7);
+             i >= 0;
              i -= 7) {
 
             if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)||validaExtremidade( i+1)) {
@@ -27,7 +27,7 @@ public class Bispo extends Peca{
             }
         }
         for (int i = (validaExtremidade(posicaoNoTabuleiro + 1) ?
-                64 : posicaoNoTabuleiro + 7);
+                64 : posicaoNoTabuleiro + 9);
              i < tabuleiro.getPosicoes().size();
              i += 9) {
 
@@ -37,8 +37,8 @@ public class Bispo extends Peca{
         }
 
         for (int i = (validaExtremidade(posicaoNoTabuleiro)?
-                -1:posicaoNoTabuleiro+7);
-             i >=tabuleiro.getPosicoes().size();
+                -1:posicaoNoTabuleiro-9);
+             i >=0;
              i-=9) {
 
             if(verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)||validaExtremidade( i)){

@@ -12,6 +12,7 @@ public class Cavalo extends Peca{
         Posicao posicaoAtual=this.getPosicao();
         int posicaoNoTabuleiro =tabuleiro.getPosicoes().indexOf(posicaoAtual);
         for(Posicao posicao : tabuleiro.getPosicoes()) {
+
             int indice =tabuleiro.getPosicoes().indexOf(posicao);
 
             if(indice == posicaoNoTabuleiro -17||
@@ -54,7 +55,8 @@ public class Cavalo extends Peca{
                 }
                 //não é de canto
                 else{
-                    verificaPeca(posicao, possiveisMovimentos);
+                        verificaPeca(posicao, possiveisMovimentos);
+                    System.out.println("entrou no else");
                 }
 
             }
