@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Torre extends Peca{
     private boolean primMov;
-    public Torre(String cor){
-        super(cor);
+    public Torre(String cor, Posicao posicao){
+        super(cor, posicao);
     }
     @Override
     public ArrayList<Posicao> possiveisMovimento(Tabuleiro tabuleiro) {
@@ -51,8 +51,6 @@ public class Torre extends Peca{
 
     @Override
     public String toString() {
-        return "Torre{" +
-                "primMov=" + primMov +
-                "} " + super.toString();
+        return "T";
     }
 }

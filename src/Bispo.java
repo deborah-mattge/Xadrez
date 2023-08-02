@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Bispo extends Peca{
-    public Bispo(String cor){
-        super(cor);
+    public Bispo(String cor, Posicao posicao){
+        super(cor, posicao);
     }
     @Override
     public ArrayList<Posicao> possiveisMovimento(Tabuleiro tabuleiro) {
@@ -51,6 +51,6 @@ public class Bispo extends Peca{
 
     @Override
     public String toString() {
-        return "Bispo"+super.toString();
+        return "B";
     }
 }

@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Rainha extends Peca {
 
-    public Rainha(String cor){
-        super(cor);
+    public Rainha(String cor, Posicao posicao){
+        super(cor, posicao);
     }
     @Override
     public ArrayList<Posicao> possiveisMovimento(Tabuleiro tabuleiro) {
@@ -87,7 +87,7 @@ public class Rainha extends Peca {
 
     @Override
     public String toString() {
-        return "Rainha{} " + super.toString();
+        return "D";
     }
 }
 

@@ -3,8 +3,9 @@ import java.util.ArrayList;
 public abstract class Peca {
     private String cor;
     private Posicao posicao;
-    public Peca (String cor){
+    public Peca (String cor, Posicao posicao){
         this.cor=cor;
+        this.posicao=posicao;
     }
 
 
@@ -57,11 +58,6 @@ public abstract class Peca {
         return cor;
     }
 
-    @Override
-    public String toString() {
-        return "cor='" + cor + '\'' +
-                ", posicao=" + posicao +
-                '}';
-    }
+
 }
 

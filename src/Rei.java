@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Rei extends Peca{
-    public Rei(String cor){
-        super(cor);
+    public Rei(String cor, Posicao posicao){
+        super(cor, posicao);
     }
 
     private boolean primMov;
@@ -48,8 +48,6 @@ public class Rei extends Peca{
 
     @Override
     public String toString() {
-        return "Rei{" +
-                "primMov=" + primMov +
-                "} " + super.toString();
+        return "R";
     }
 }

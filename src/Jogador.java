@@ -10,7 +10,7 @@ public class Jogador {
     public Jogador(String nome, String senha) {
         this.nome = nome;
         this.senha = senha;
-        this.pecas=new ArrayList<>();
+        this.pecas=new ArrayList<>(64);
     }
 
 
