@@ -15,27 +15,38 @@ public class Rei extends Peca{
 
 
         for(Posicao posicao : tabuleiro.getPosicoes()){
+
             int indice =tabuleiro.getPosicoes().indexOf(posicao);
-            if(indice == posicaoNoTabuleiro-9 ||
+            if(     indice == posicaoNoTabuleiro -8 ||
+                    indice == posicaoNoTabuleiro-9 ||
                     indice == posicaoNoTabuleiro -7 ||
                     indice == posicaoNoTabuleiro -1 ||
                     indice == posicaoNoTabuleiro +1 ||
                     indice == posicaoNoTabuleiro +7 ||
                     indice == posicaoNoTabuleiro +8 ||
                     indice == posicaoNoTabuleiro +9){
+                System.out.println(indice);
                 //coluna H
                 if(validaExtremidade(posicaoNoTabuleiro+1)&& !(
                         indice== posicaoNoTabuleiro-7||
                                 indice== posicaoNoTabuleiro+1||
                                 indice== posicaoNoTabuleiro+9
+
                 )){
                     verificaPeca(posicao, possiveisMovimentos);
+                    System.out.println("if1");
+
                 }
                 //coluna A
                 else if(validaExtremidade(posicaoNoTabuleiro) && !(
                         indice == posicaoNoTabuleiro-9||
                         indice == posicaoNoTabuleiro-1 ||
-                        indice == posicaoNoTabuleiro+7)){
+                        indice == posicaoNoTabuleiro+7
+                )){
+                    verificaPeca(posicao, possiveisMovimentos);
+                    System.out.println("if2");
+                }
+                else{
                     verificaPeca(posicao, possiveisMovimentos);
 
                 }

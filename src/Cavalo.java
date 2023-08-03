@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 
 public class Cavalo extends Peca{
@@ -23,47 +24,65 @@ public class Cavalo extends Peca{
 
                     indice == posicaoNoTabuleiro +10||
                     indice == posicaoNoTabuleiro +15||
-                    indice == posicaoNoTabuleiro +17){
-                //coluna H
-                if(validaExtremidade(posicaoNoTabuleiro+1)&& !(
-                        indice== posicaoNoTabuleiro-15||
-                                indice== posicaoNoTabuleiro-6||
-                                indice== posicaoNoTabuleiro+10||
-                                indice== posicaoNoTabuleiro+17
-                )){
-                    verificaPeca(posicao, possiveisMovimentos);
-                }
-                //coluna A
-                else if(validaExtremidade(posicaoNoTabuleiro) && !(indice == posicaoNoTabuleiro-17 ||
-                        indice == posicaoNoTabuleiro-10||
-                        indice == posicaoNoTabuleiro+6 ||
-                        indice == posicaoNoTabuleiro+15)){
-                    verificaPeca(posicao, possiveisMovimentos);
+                    indice == posicaoNoTabuleiro +17) {
 
+                System.out.println(indice);
+
+                //coluna A
+                 if(validaExtremidade(posicaoNoTabuleiro) ) {
+                    if (!(indice == posicaoNoTabuleiro - 17 ||
+                            indice == posicaoNoTabuleiro - 10 ||
+                            indice == posicaoNoTabuleiro + 6 ||
+                            indice == posicaoNoTabuleiro + 15)) {
+
+                        verificaPeca(posicao, possiveisMovimentos);
+
+                    }
                 }
+
                 //coluna B
-                else if(validaExtremidade(posicaoNoTabuleiro-1) && !(indice ==posicaoNoTabuleiro -10 ||
-                        indice ==posicaoNoTabuleiro +6
-                        )){
-                    verificaPeca(posicao, possiveisMovimentos);
+                else if(validaExtremidade(posicaoNoTabuleiro-1)) {
+                    if (!(indice == posicaoNoTabuleiro - 10 ||
+                            indice == posicaoNoTabuleiro + 6
+                    )) {
+
+                        verificaPeca(posicao, possiveisMovimentos);
+
+                    }
                 }
                 //coluna G
-                else if(validaExtremidade(posicaoNoTabuleiro+2) && !(indice ==posicaoNoTabuleiro -15 ||
-                        indice ==posicaoNoTabuleiro +17
-                )){
-                    verificaPeca(posicao, possiveisMovimentos);
+                else if(validaExtremidade(posicaoNoTabuleiro+2)) {
+                     System.out.println("coluna g ");
+                    if (!(indice == posicaoNoTabuleiro + 15 ||
+                            indice == posicaoNoTabuleiro - 17
+                    )) {
+                        verificaPeca(posicao, possiveisMovimentos);
+                    }
+                }
+                //coluna H
+                else if (this.validaExtremidade(posicaoNoTabuleiro + 1)){
+                    System.out.println("coluna h");
+                    if (!(
+                            indice == posicaoNoTabuleiro - 15 ||
+                                    indice == posicaoNoTabuleiro - 6 ||
+                                    indice == posicaoNoTabuleiro + 10 ||
+                                    indice == posicaoNoTabuleiro + 17)) {
+                        verificaPeca(posicao, possiveisMovimentos);
+
+                    }
                 }
                 //não é de canto
                 else{
                         verificaPeca(posicao, possiveisMovimentos);
-                    System.out.println("entrou no else");
+
                 }
 
             }
 
 
         }
-        return null;
+
+        return possiveisMovimentos;
     }
 
     @Override

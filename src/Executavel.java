@@ -1,11 +1,14 @@
+import com.sun.security.jgss.GSSUtil;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Executavel {
 
     static Tabuleiro tabuleiro = new Tabuleiro();
+    static Scanner sc= new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner sc= new Scanner(System.in);
         Jogador j1 =new Jogador("jorge","Senh@123");
         Jogador j2 =new Jogador("Wilson","wilson");
 
@@ -14,32 +17,10 @@ public class Executavel {
         int i=1;
         do {
             mostrarTabuleiro();
+            System.out.println("escoha a peça que deseja movimenar: ");
             int escolhaPeca = sc.nextInt();
-            Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
-            if(j2.getPecas().contains(peca)){
-
-                System.out.println(peca);
-                //Escolha da posição para o movimento
-                ArrayList<Posicao> posicoes = peca.possiveisMovimento(tabuleiro);
-                System.out.println("posicoes " + posicoes);
-                int escolhaPosicao = sc.nextInt();
-                Posicao posicaoMovimentar = tabuleiro.getPosicoes().get(escolhaPosicao);
-                for (Posicao posicao : posicoes) {
-                    if (posicao.equals(posicaoMovimentar)) {
-                        j1.moverPeca(peca, posicaoMovimentar, tabuleiro, j2);
-                        if (peca instanceof Peao) {
-                            ((Peao) peca).setPrimMov(false);
-                        }
-
-                        System.out.println(validaVitoria(j2));
-                    }
-                }
-            }else{
-                if(peca==null){
-                    System.out.println("essa posição é inválida");
-                }else{
-                    System.out.println("Essa peça não pertence a você");
-                }
+            if(!movimentar(escolhaPeca, j1,j2)){
+                System.out.println("movimento inválido");
             }
 
         }while(i>0);
@@ -76,5 +57,33 @@ public class Executavel {
         }
         pos = 0;
     }
+    public static boolean movimentar(int escolhaPeca, Jogador j1, Jogador j2) {
+        Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
+        if (j1.getPecas().contains(peca)) {
+
+            System.out.println(peca);
+            //Escolha da posição para o movimento
+            ArrayList<Posicao> posicoes = peca.possiveisMovimento(tabuleiro);
+            System.out.println("posicoes " + posicoes);
+            System.out.println("escolha a posição: ");
+            int escolhaPosicao = sc.nextInt();
+            Posicao posicaoMovimentar = tabuleiro.getPosicoes().get(escolhaPosicao);
+            for (Posicao posicao : posicoes) {
+                if (posicao.equals(posicaoMovimentar)) {
+                    j1.moverPeca(peca, posicaoMovimentar, tabuleiro, j2);
+                    if (peca instanceof Peao) {
+                        ((Peao) peca).setPrimMov(false);
+                    }
+
+                    System.out.println(validaVitoria(j2));
+                    return true;
+                }
+
+            }
+
+        }
+        return false;
+    }
 }
+
 
