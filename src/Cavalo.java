@@ -1,4 +1,6 @@
 
+
+
 import java.util.ArrayList;
 
 public class Cavalo extends Peca{
@@ -26,7 +28,7 @@ public class Cavalo extends Peca{
                     indice == posicaoNoTabuleiro +15||
                     indice == posicaoNoTabuleiro +17) {
 
-                System.out.println(indice);
+
 
                 //coluna A
                  if(validaExtremidade(posicaoNoTabuleiro) ) {
@@ -42,6 +44,7 @@ public class Cavalo extends Peca{
 
                 //coluna B
                 else if(validaExtremidade(posicaoNoTabuleiro-1)) {
+                     System.out.println("coluna B");
                     if (!(indice == posicaoNoTabuleiro - 10 ||
                             indice == posicaoNoTabuleiro + 6
                     )) {
@@ -52,10 +55,14 @@ public class Cavalo extends Peca{
                 }
                 //coluna G
                 else if(validaExtremidade(posicaoNoTabuleiro+2)) {
+                     System.out.println(indice);
                      System.out.println("coluna g ");
-                    if (!(indice == posicaoNoTabuleiro + 15 ||
-                            indice == posicaoNoTabuleiro - 17
+
+
+                    if (!(indice == posicaoNoTabuleiro +10 ||
+                            indice == posicaoNoTabuleiro-6
                     )) {
+                        System.out.println("entrouu");
                         verificaPeca(posicao, possiveisMovimentos);
                     }
                 }
@@ -73,7 +80,8 @@ public class Cavalo extends Peca{
                 }
                 //não é de canto
                 else{
-                        verificaPeca(posicao, possiveisMovimentos);
+                     System.out.println("else");
+                    verificaPeca(posicao, possiveisMovimentos);
 
                 }
 

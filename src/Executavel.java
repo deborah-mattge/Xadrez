@@ -7,6 +7,7 @@ public class Executavel {
 
     static Tabuleiro tabuleiro = new Tabuleiro();
     static Scanner sc= new Scanner(System.in);
+    static boolean promover;
 
     public static void main(String[] args) {
         Jogador j1 =new Jogador("jorge","Senh@123");
@@ -64,7 +65,9 @@ public class Executavel {
             System.out.println(peca);
             //Escolha da posição para o movimento
             ArrayList<Posicao> posicoes = peca.possiveisMovimento(tabuleiro);
-            System.out.println("posicoes " + posicoes);
+           for(Posicao posicao : posicoes){
+               System.out.println("posição possivel: "+tabuleiro.getPosicoes().indexOf(posicao));
+           }
             System.out.println("escolha a posição: ");
             int escolhaPosicao = sc.nextInt();
             Posicao posicaoMovimentar = tabuleiro.getPosicoes().get(escolhaPosicao);
@@ -73,6 +76,9 @@ public class Executavel {
                     j1.moverPeca(peca, posicaoMovimentar, tabuleiro, j2);
                     if (peca instanceof Peao) {
                         ((Peao) peca).setPrimMov(false);
+                        promover=((Peao) peca).promover(tabuleiro);
+                        System.out.println(promover);
+                        promocao(peca);
                     }
 
                     System.out.println(validaVitoria(j2));
@@ -84,6 +90,53 @@ public class Executavel {
         }
         return false;
     }
+    public  static void promocao(Peca peca){
+        Peca pecaPromovida;
+        if(promover){
+            System.out.println("""
+                    Seu peão chegou ao fim do tabuleiro!
+                    para qual peça deeja promove-lo?
+                    1- Rainha 
+                    2- Torre 
+                    3 - Cavalo 
+                    4 -Bispo 
+                    """);
+            int escolha = sc.nextInt();
+            int indexPecaPromovida = tabuleiro.getPosicoes().indexOf(peca.getPosicao());
+
+            switch (escolha){
+                case 1:
+                    pecaPromovida = new Rainha(peca.getCor(),peca.getPosicao());
+                    tabuleiro.getPosicoes().get(indexPecaPromovida).setPeca(pecaPromovida);
+                    peca=pecaPromovida;
+
+                    break;
+                case 2:
+                    pecaPromovida = new Torre(peca.getCor(),peca.getPosicao());
+                    tabuleiro.getPosicoes().get(indexPecaPromovida).setPeca(pecaPromovida);
+                    peca=pecaPromovida;
+
+                    break;
+                case 3:
+                    pecaPromovida = new Cavalo(peca.getCor(),peca.getPosicao());
+                    tabuleiro.getPosicoes().get(indexPecaPromovida).setPeca(pecaPromovida);
+                    peca=pecaPromovida;
+
+                    break;
+                case 4:
+                    pecaPromovida = new Bispo(peca.getCor(),peca.getPosicao());
+                    tabuleiro.getPosicoes().get(indexPecaPromovida).setPeca(pecaPromovida);
+                    peca=pecaPromovida;
+
+                    break;
+
+            }
+            System.out.println(peca);
+
+
+        }
+    }
+
 }
 
 
