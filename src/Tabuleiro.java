@@ -51,6 +51,9 @@ public class Tabuleiro {
                 posicoes.get(i).setPeca(new Rei("Branco", posicoes.get(i)));
 
             }
+            if(i==11){
+                posicoes.get(i).setPeca(new Rainha("Branco", posicoes.get(i)));
+            }
 
         }
 

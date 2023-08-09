@@ -25,7 +25,7 @@ public class Rei extends Peca{
                     indice == posicaoNoTabuleiro +7 ||
                     indice == posicaoNoTabuleiro +8 ||
                     indice == posicaoNoTabuleiro +9){
-                System.out.println(indice);
+
                 //coluna H
                 if(validaExtremidade(posicaoNoTabuleiro+1)&& !(
                         indice== posicaoNoTabuleiro-7||
@@ -34,7 +34,7 @@ public class Rei extends Peca{
 
                 )){
                     verificaPeca(posicao, possiveisMovimentos);
-                    System.out.println("if1");
+
 
                 }
                 //coluna A
@@ -44,7 +44,7 @@ public class Rei extends Peca{
                         indice == posicaoNoTabuleiro+7
                 )){
                     verificaPeca(posicao, possiveisMovimentos);
-                    System.out.println("if2");
+
                 }
                 else{
                     verificaPeca(posicao, possiveisMovimentos);
@@ -56,6 +56,27 @@ public class Rei extends Peca{
         }
         return possiveisMovimentos;
     }
+    public ArrayList<Posicao> verificaXeque(Tabuleiro tabuleiro, ArrayList<Posicao> posicoesRei){
+        ArrayList<Posicao> possivelXeque = new ArrayList<>();
+        for(Posicao posicao : tabuleiro.getPosicoes()){
+
+            if(posicao.getPeca()!=null && !(posicao.getPeca().getCor().equals(this.getCor()))) {
+
+
+                ArrayList<Posicao> posicoesAtaque =posicao.getPeca().possiveisMovimento(tabuleiro);
+                for (Posicao p : posicoesAtaque){
+                    if(p.equals(this.getPosicao())){
+
+                        possivelXeque.add(p);
+                    }
+                }
+            }
+        }
+        System.out.println("pos"+possivelXeque);
+        return possivelXeque;
+
+    }
+
 
     @Override
     public String toString() {
