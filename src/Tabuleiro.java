@@ -23,7 +23,7 @@ public class Tabuleiro {
                 posicoes.get(i).setPeca(new Cavalo("Preto", posicoes.get(i)));
 
             }
-            if(i==57 || i==62){
+            if(i==57 ){
                 posicoes.get(i).setPeca(new Cavalo("Branco", posicoes.get(i)));
 
             }
@@ -31,7 +31,7 @@ public class Tabuleiro {
                 posicoes.get(i).setPeca(new Bispo("Preto", posicoes.get(i)));
 
             }
-            if(i==58 || i==61){
+            if(i==58 ){
                 posicoes.get(i).setPeca(new Bispo("Branco", posicoes.get(i)));
 
             }
@@ -51,9 +51,7 @@ public class Tabuleiro {
                 posicoes.get(i).setPeca(new Rei("Branco", posicoes.get(i)));
 
             }
-            if(i==11){
-                posicoes.get(i).setPeca(new Rainha("Branco", posicoes.get(i)));
-            }
+
 
         }
 

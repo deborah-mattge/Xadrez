@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Torre extends Peca{
-    private boolean primMov;
+    private boolean primMov = true;
     public Torre(String cor, Posicao posicao) {
         super(cor, posicao);
     }
@@ -21,9 +21,7 @@ public class Torre extends Peca{
         for (int i = posicaoNoTabuleiro-8;
              i >= 0;
              i -= 8) {
-            System.out.println("entrou no for 2");
             if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)) {
-                System.out.println("entrou no if ");
                 break;
             }
         }
@@ -45,11 +43,15 @@ public class Torre extends Peca{
                 break;
             }
         }
-    for(Posicao posicao:possiveisMovimentos){
-        System.out.println(tabuleiro
-        .getPosicoes().indexOf(posicao));
-    }
+
         return possiveisMovimentos;
+    }
+    public boolean isPrimMov() {
+        return primMov;
+    }
+
+    public void setPrimMov(boolean primMov) {
+        this.primMov = primMov;
     }
 
     @Override

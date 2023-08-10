@@ -44,7 +44,6 @@ public class Cavalo extends Peca{
 
                 //coluna B
                 else if(validaExtremidade(posicaoNoTabuleiro-1)) {
-                     System.out.println("coluna B");
                     if (!(indice == posicaoNoTabuleiro - 10 ||
                             indice == posicaoNoTabuleiro + 6
                     )) {
@@ -55,20 +54,19 @@ public class Cavalo extends Peca{
                 }
                 //coluna G
                 else if(validaExtremidade(posicaoNoTabuleiro+2)) {
-                     System.out.println(indice);
-                     System.out.println("coluna g ");
+
 
 
                     if (!(indice == posicaoNoTabuleiro +10 ||
                             indice == posicaoNoTabuleiro-6
                     )) {
-                        System.out.println("entrouu");
+
                         verificaPeca(posicao, possiveisMovimentos);
                     }
                 }
                 //coluna H
                 else if (this.validaExtremidade(posicaoNoTabuleiro + 1)){
-                    System.out.println("coluna h");
+
                     if (!(
                             indice == posicaoNoTabuleiro - 15 ||
                                     indice == posicaoNoTabuleiro - 6 ||
@@ -80,7 +78,7 @@ public class Cavalo extends Peca{
                 }
                 //não é de canto
                 else{
-                     System.out.println("else");
+
                     verificaPeca(posicao, possiveisMovimentos);
 
                 }

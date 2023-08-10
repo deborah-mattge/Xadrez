@@ -81,11 +81,7 @@ public class Rainha extends Peca {
             if(verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)||validaExtremidade( i)){
                 break;
             }
-        } for(Posicao posicao:possiveisMovimentos){
-            System.out.println(tabuleiro
-                    .getPosicoes().indexOf(posicao));
         }
-
 
         return possiveisMovimentos;
     }

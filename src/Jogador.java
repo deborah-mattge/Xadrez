@@ -47,4 +47,15 @@ public class Jogador {
     public ArrayList<Peca> getPecas() {
         return pecas;
     }
+
+    @Override
+    public String toString() {
+        return "Jogador{" +
+                "nome='" + nome + '\'' +
+                ", senha='" + senha + '\'' +
+                ", cor='" + cor + '\'' +
+                ", pontos=" + pontos +
+                ", pecas=" + pecas +
+                '}';
+    }
 }

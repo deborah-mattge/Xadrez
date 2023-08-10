@@ -5,7 +5,7 @@ public class Rei extends Peca{
         super(cor, posicao);
     }
 
-    private boolean primMov;
+    private boolean primMov = true;
 
     @Override
     public ArrayList<Posicao> possiveisMovimento(Tabuleiro tabuleiro) {
@@ -57,6 +57,7 @@ public class Rei extends Peca{
         return possiveisMovimentos;
     }
     public ArrayList<Posicao> verificaXeque(Tabuleiro tabuleiro, ArrayList<Posicao> posicoesRei){
+        boolean verificaXeque =false;
         ArrayList<Posicao> possivelXeque = new ArrayList<>();
         for(Posicao posicao : tabuleiro.getPosicoes()){
 
@@ -68,13 +69,25 @@ public class Rei extends Peca{
                     if(p.equals(this.getPosicao())){
 
                         possivelXeque.add(p);
+                        verificaXeque=true;
+                        break;
                     }
                 }
             }
         }
+        if(!(possivelXeque.size()>0)){
+            return null;
+        }
         System.out.println("pos"+possivelXeque);
         return possivelXeque;
 
+    }
+    public boolean isPrimMov() {
+        return primMov;
+    }
+
+    public void setPrimMov(boolean primMov) {
+        this.primMov = primMov;
     }
 
 
