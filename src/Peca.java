@@ -26,19 +26,21 @@ public abstract class Peca {
 
     public boolean mover(Tabuleiro tabuleiro, Posicao posicao) {
         ArrayList<Posicao> possiveisPosicoes = possiveisMovimento(tabuleiro);
-        for (Posicao posicaoPossivel : possiveisPosicoes) {
-            if (posicaoPossivel == posicao) {
+//        for (Posicao posicaoPossivel : possiveisPosicoes) {
+//            if (posicaoPossivel == posicao) {
                 //atribuindo a peça para nova posição no tabuleiro
                 posicao.setPeca(this);
                 //removendo a peça da posição anterior
                 this.posicao.setPeca(null);
                 //trocando a posição atual da peça
                 this.posicao = posicao;
+                System.out.println("movii");
                return true;
-            }
-        }
-        this.posicao = posicao;
-        return false;
+
+//            }
+//        }
+
+
 
     }
     public boolean validaExtremidade(int posicaoNoTabuleiro){

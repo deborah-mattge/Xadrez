@@ -54,7 +54,7 @@ public class Rei extends Peca{
             }
 
         }
-        return possiveisMovimentos;
+         return possiveisMovimentos;
     }
     public ArrayList<Posicao> verificaXeque(Tabuleiro tabuleiro, ArrayList<Posicao> posicoesRei){
         boolean verificaXeque =false;

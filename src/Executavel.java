@@ -48,32 +48,21 @@ public class Executavel {
             for (Posicao p : tabuleiro.getPosicoes()) {
                 if (p.getPeca() instanceof Rei) {
 
-                    if(((Rei) p.getPeca()).verificaXeque(tabuleiro, p.getPeca().possiveisMovimento(tabuleiro))!=null){
-                        System.out.println("Jogador: "+jogadorAdversario+"Você está em xeque!");
+                    if (((Rei) p.getPeca()).verificaXeque(tabuleiro, p.getPeca().possiveisMovimento(tabuleiro)) != null) {
+                        System.out.println("Jogador: " + jogadorAdversario + "Você está em xeque!");
                     }
                 }
             }
+            if(roque(peca)){
+                primMov(peca);
+                return true;
+            }
+
 
             for (Posicao posicao : posicoes) {
                 System.out.println("posição possivel: " + tabuleiro.getPosicoes().indexOf(posicao));
             }
-            if( peca instanceof Rei ) {
-                if(((Rei) peca).isPrimMov()) {
-                    if (((Rei) peca).isPrimMov()) {
-                        int indice = tabuleiro.getPosicoes().indexOf(peca.getPosicao());
-                        System.out.println(indice);
-                        if (tabuleiro.getPosicoes().get(indice + 1).getPeca() == null) {
-                            if (tabuleiro.getPosicoes().get(indice + 2).getPeca() == null) {
-                                    if (tabuleiro.getPosicoes().get(indice +3 ).getPeca() instanceof Torre) {
-                                        System.out.println("Você deseja realizar o roque? ");
 
-                                    }
-                                }
-                            }
-                        }
-
-                }
-            }
             System.out.println("escolha a posição: ");
             int escolhaPosicao = sc.nextInt();
             Posicao posicaoMovimentar = tabuleiro.getPosicoes().get(escolhaPosicao);
@@ -91,24 +80,72 @@ public class Executavel {
         }
         return false;
     }
-    public  static  boolean primMov(Peca peca ){
+
+    public static boolean primMov(Peca peca) {
         if (peca instanceof Peao) {
             ((Peao) peca).setPrimMov(false);
             promover = ((Peao) peca).promover(tabuleiro);
             System.out.println(promover);
             promocao(peca);
-        }
-        else if(peca instanceof  Rei){
+        } else if (peca instanceof Rei) {
             ((Rei) peca).setPrimMov(false);
             return false;
-        }
-        else if(peca instanceof  Torre){
+        } else if (peca instanceof Torre) {
             ((Torre) peca).setPrimMov(false);
             return false;
         }
         return true;
 
     }
+
+    public static boolean roque(Peca peca) {
+
+        if (peca instanceof Rei) {
+            if (((Rei) peca).isPrimMov()) {
+                int indice = tabuleiro.getPosicoes().indexOf(peca.getPosicao());
+                System.out.println(indice);
+                if (tabuleiro.getPosicoes().get(indice + 1).getPeca() == null) {
+                    if (tabuleiro.getPosicoes().get(indice + 2).getPeca() == null) {
+                        if (tabuleiro.getPosicoes().get(indice + 3).getPeca() instanceof Torre) {
+
+                            System.out.println("deseja realizar o roque curto? \n" +
+                                    "1-sim\n" +
+                                    "0-não");
+                            int respostas = sc.nextInt();
+                            if(respostas==1){
+                                peca.mover(tabuleiro,tabuleiro.getPosicoes().get(indice+2));
+                                System.out.println("sou o indice " +(indice+2));
+                                tabuleiro.getPosicoes().get(indice + 3).getPeca().mover(tabuleiro,tabuleiro.getPosicoes().get(indice+1));
+                                return true;
+                            }
+
+                        }
+                    }
+                }else if (tabuleiro.getPosicoes().get(indice - 1).getPeca() == null) {
+                        if (tabuleiro.getPosicoes().get(indice - 2).getPeca() == null) {
+                            if (tabuleiro.getPosicoes().get(indice - 3).getPeca() instanceof Torre) {
+                                System.out.println("deseja realizar o roque longo? \n" +
+                                        "1-sim\n" +
+                                        "0-não");
+                                int respostas = sc.nextInt();
+                                if(respostas==1){
+                                    peca.mover(tabuleiro,tabuleiro.getPosicoes().get(indice-2));
+                                    tabuleiro.getPosicoes().get(indice - 3).getPeca().mover(tabuleiro,tabuleiro.getPosicoes().get(indice-3));
+                                    return true;
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+
+            }
+        return false;
+
+        }
+
+
 
 
     public static void promocao(Peca peca) {
