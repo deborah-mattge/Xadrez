@@ -17,8 +17,8 @@ public class Executavel {
 
         j1.setCor("Branco", tabuleiro);
         j2.setCor("Preto", tabuleiro);
-        jogadorDaVez = j1;
-        jogadorAdversario = j2;
+        jogadorDaVez = j2;
+        jogadorAdversario = j1;
         int i = 1;
         do {
             mostrarTabuleiro();
@@ -43,14 +43,15 @@ public class Executavel {
         Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
         if (jogadorDaVez.getPecas().contains(peca)) {
             System.out.println(peca);
-            //Escolha da posição para o movimento
             ArrayList<Posicao> posicoes = peca.possiveisMovimento(tabuleiro);
             for (Posicao p : tabuleiro.getPosicoes()) {
                 if (p.getPeca() instanceof Rei) {
 
-                    if (((Rei) p.getPeca()).verificaXeque(tabuleiro, p.getPeca().possiveisMovimento(tabuleiro)) != null) {
+                    if (((Rei) p.getPeca()).verificaXeque(tabuleiro) != null) {
                         System.out.println("Jogador: " + jogadorAdversario + "Você está em xeque!");
+                       verificaSalvarRei(p.getPeca());
                     }
+
                 }
             }
             if(roque(peca)){
@@ -79,6 +80,36 @@ public class Executavel {
 
         }
         return false;
+    }
+    public static void verificaSalvarRei(Peca rei){
+//        for(Posicao pTAbuleiro : tabuleiro.getPosicoes()) {
+//                    if (pTAbuleiro.getPeca() != null &&  (pTAbuleiro.getPeca().getCor().equals(rei.getCor()))) {
+//                        for (Posicao posicaoXeque : ((Rei) rei).getPossivelXeque()) {
+//                        for (Posicao posMovimento : pTAbuleiro.getPeca().possiveisMovimento(tabuleiro)) {
+//                            if (posMovimento.equals(posicaoXeque)) {
+//                                System.out.println(pTAbuleiro.getPeca() + " eu salvo o rei");
+//                            }
+//                        }
+//                    }
+//            }
+//        }
+        for(Posicao posicao : tabuleiro.getPosicoes()){
+            if(posicao.getPeca()!=null && posicao.getPeca().getCor().equals(rei.getCor())){
+                Peca pecaTeste = posicao.getPeca();
+                for(Posicao posicao1 : pecaTeste.possiveisMovimento(tabuleiro)){
+                    pecaTeste.mover(tabuleiro, posicao1);
+                    if(((Rei) rei).verificaXeque(tabuleiro)!=null){
+                        pecaTeste.mover(tabuleiro,posicao);
+                    }else{
+                        pecaTeste.mover(tabuleiro,posicao);
+                        System.out.println(pecaTeste+ " eu salvo o rei");
+                    }
+                }
+            }
+        }
+
+
+
     }
 
     public static boolean primMov(Peca peca) {
@@ -123,17 +154,19 @@ public class Executavel {
                     }
                 }else if (tabuleiro.getPosicoes().get(indice - 1).getPeca() == null) {
                         if (tabuleiro.getPosicoes().get(indice - 2).getPeca() == null) {
-                            if (tabuleiro.getPosicoes().get(indice - 3).getPeca() instanceof Torre) {
-                                System.out.println("deseja realizar o roque longo? \n" +
-                                        "1-sim\n" +
-                                        "0-não");
-                                int respostas = sc.nextInt();
-                                if(respostas==1){
-                                    peca.mover(tabuleiro,tabuleiro.getPosicoes().get(indice-2));
-                                    tabuleiro.getPosicoes().get(indice - 3).getPeca().mover(tabuleiro,tabuleiro.getPosicoes().get(indice-3));
-                                    return true;
-                                }
+                            if (tabuleiro.getPosicoes().get(indice - 3).getPeca() == null) {
+                                if (tabuleiro.getPosicoes().get(indice - 4).getPeca() instanceof Torre) {
+                                    System.out.println("deseja realizar o roque longo? \n" +
+                                            "1-sim\n" +
+                                            "0-não");
+                                    int respostas = sc.nextInt();
+                                    if (respostas == 1) {
+                                        peca.mover(tabuleiro, tabuleiro.getPosicoes().get(indice - 2));
+                                        tabuleiro.getPosicoes().get(indice - 4).getPeca().mover(tabuleiro, tabuleiro.getPosicoes().get(indice - 1));
+                                        return true;
+                                    }
 
+                                }
                             }
                         }
                     }

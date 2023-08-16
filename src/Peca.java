@@ -34,7 +34,7 @@ public abstract class Peca {
                 this.posicao.setPeca(null);
                 //trocando a posição atual da peça
                 this.posicao = posicao;
-                System.out.println("movii");
+
                return true;
 
 //            }
