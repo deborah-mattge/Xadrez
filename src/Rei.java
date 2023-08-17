@@ -6,7 +6,7 @@ public class Rei extends Peca{
     }
 
     private boolean primMov = true;
-    private ArrayList<Posicao> possivelXeque = new ArrayList<>();
+    private ArrayList<Peca> possivelXeque = new ArrayList<>();
 
     @Override
     public ArrayList<Posicao> possiveisMovimento(Tabuleiro tabuleiro) {
@@ -57,7 +57,7 @@ public class Rei extends Peca{
         }
         return possiveisMovimentos;
     }
-    public ArrayList<Posicao> verificaXeque(Tabuleiro tabuleiro){
+    public ArrayList<Peca> verificaXeque(Tabuleiro tabuleiro){
 
         possivelXeque=new ArrayList<>();
         for(Posicao posicao : tabuleiro.getPosicoes()){
@@ -69,7 +69,8 @@ public class Rei extends Peca{
                 for (Posicao p : posicoesAtaque){
                     if(p.equals(this.getPosicao())){
 
-                        possivelXeque.add(p);
+                        possivelXeque.add(posicao.getPeca());
+
 
 
                     }
@@ -91,16 +92,22 @@ public class Rei extends Peca{
         this.primMov = primMov;
     }
 
-    public ArrayList<Posicao> getPossivelXeque() {
+    public ArrayList<Peca> getPossivelXeque() {
         return possivelXeque;
     }
 
-    public void setPossivelXeque(ArrayList<Posicao> possivelXeque) {
+    public void setPossivelXeque(ArrayList<Peca> possivelXeque) {
         this.possivelXeque = possivelXeque;
     }
 
     @Override
     public String toString() {
-        return "R";
+        if (getCor().equals("Branco")) {
+            return "R-B";
+        } else if (getCor().equals("Preto")) {
+            return "R-P";
+        }
+
+       return "R";
     }
 }

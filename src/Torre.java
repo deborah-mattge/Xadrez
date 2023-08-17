@@ -56,6 +56,12 @@ public class Torre extends Peca{
 
     @Override
     public String toString() {
-        return "T";
+        if (getCor().equals("Branco")) {
+            return "T-B";
+        } else if (getCor().equals("Preto")) {
+            return "T-P";
+        }
+
+        return "R";
     }
 }

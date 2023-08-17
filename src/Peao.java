@@ -92,6 +92,12 @@ public class Peao extends Peca {
 
     @Override
     public String toString() {
-        return "P";
+        if (getCor().equals("Branco")) {
+            return "P-B";
+        } else if (getCor().equals("Preto")) {
+            return "P-P";
+        }
+
+        return "R";
     }
 }

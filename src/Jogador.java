@@ -6,11 +6,13 @@ public class Jogador {
     private String cor;
     private double pontos;
     private ArrayList<Peca> pecas ;
+    private boolean estaEmXeque;
 
-    public Jogador(String nome, String senha) {
+    public Jogador(String nome, String senha, Boolean estaEmXeque) {
         this.nome = nome;
         this.senha = senha;
         this.pecas=new ArrayList<>(64);
+        this.estaEmXeque=estaEmXeque;
     }
 
 
@@ -57,5 +59,21 @@ public class Jogador {
                 ", pontos=" + pontos +
                 ", pecas=" + pecas +
                 '}';
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setPecas(Peca peca) {
+        this.pecas.add(peca);
+    }
+
+    public boolean isEstaEmXeque() {
+        return estaEmXeque;
+    }
+
+    public void setEstaEmXeque(boolean estaEmXeque) {
+        this.estaEmXeque = estaEmXeque;
     }
 }

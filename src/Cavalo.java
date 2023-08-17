@@ -93,6 +93,12 @@ public class Cavalo extends Peca{
 
     @Override
     public String toString() {
-        return "C" ;
+        if (getCor().equals("Branco")) {
+            return "C-B";
+        } else if (getCor().equals("Preto")) {
+            return "C-P";
+        }
+
+        return "R";
     }
 }

@@ -51,6 +51,12 @@ public class Bispo extends Peca{
 
     @Override
     public String toString() {
-        return "B";
+        if (getCor().equals("Branco")) {
+            return "B-B";
+        } else if (getCor().equals("Preto")) {
+            return "B-P";
+        }
+
+        return "R";
     }
 }

@@ -88,7 +88,13 @@ public class Rainha extends Peca {
 
     @Override
     public String toString() {
-        return "D";
+        if (getCor().equals("Branco")) {
+            return "D-B";
+        } else if (getCor().equals("Preto")) {
+            return "D-P";
+        }
+
+        return "R";
     }
 }
 
